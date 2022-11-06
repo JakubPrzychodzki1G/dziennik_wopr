@@ -1,74 +1,5 @@
 <?php
-function zajety($conn, $login)
-{
-    $rezultat;
-    if(is_numeric($login)==true){
-        $sql="SELECT * FROM users WHERE id=?;";
-    }
-    elseif(is_numeric($login)==true && $login<0){
-        $login=$login*-1;
-        $sql="SELECT imie, nazwisko FROM users WHERE id=?;";
-    }
-    else{
-        $sql="SELECT * FROM users WHERE login=?;";
-    }
-    $stmt = mysqli_stmt_init($conn);
-    if(!mysqli_stmt_prepare($stmt,$sql))
-    {
-        header("location: ../rejestracja1.php?error=zajetylogin");
-        exit();
-    }
-    mysqli_stmt_bind_param($stmt,"s",$login);
-    mysqli_stmt_execute($stmt);
 
-    $rezultat_zbazy = mysqli_stmt_get_result($stmt);
-
-    if($row = mysqli_fetch_assoc($rezultat_zbazy)){
-        return $row;
-    }
-    else{
-        $rezultat=false;
-        return $rezultat;
-    }
-
-    mysqli_stmt_close($stmt);
-}
-function logowanie($conn, $login, $haslo)
-{
-    $czyjestlogin = zajety($conn, $login);
-    $hasloHash = $czyjestlogin["haslo"];
-    $sprawdzeniehaslo = password_verify($haslo, $hasloHash);
-    
-    if($czyjestlogin===false){
-        header("location: ../login-form-15/index_wopr.php?error=zle");
-        exit();
-    }
-    if($sprawdzeniehaslo === true)
-    {
-        session_start();
-        $id_user = $czyjestlogin['id'];
-        $sql2 = "SELECT oddzial_id, ranga FROM ratownicy WHERE id = $id_user";
-        $result2 = mysqli_query($conn, $sql2);
-        while($row=mysqli_fetch_assoc($result2))
-        {
-            $id_squad=$row["oddzial_id"];
-            $ranga=$row["ranga"];
-        }
-        $_SESSION["ID"]= 0;
-        $_SESSION["ID_USER"]=$id_user;
-        $_SESSION["POZIOM_DOSTEPU"]=$czyjestlogin["poziom_dostepu"];
-        $_SESSION["ID_ODDZIAL"]=$id_squad;
-        $_SESSION["RANGA"]=$ranga;
-        header("location: ../login-form-15/main_wopr.php");
-        exit();
-    }
-    else if($sprawdzeniehaslo === false)
-    {
-        header("location: ../login-form-15/index_wopr.php?error=zle1");
-        exit();
-    }
-
-}
 function load_oddzial($conn, $id)
 {
     if($id==-1){
@@ -97,37 +28,6 @@ function load_oddzial($conn, $id)
             $array[$i]=$row["kierownik"];
             $i++;
             $array[$i]=$row["img_id"];
-            $i++;
-        }
-    }
-    return $array;
-}
-function load_lifeguard($conn, $id)
-{
-    if($id==-1){
-        $sql = "SELECT id, imie, nazwisko, ranga, akcje, oddzial_id FROM ratownicy ;";
-    }
-    else{
-        $sql = "SELECT id, imie, nazwisko, ranga, akcje, oddzial_id FROM ratownicy WHERE oddzial_id = $id ;";
-    }
-    $result = mysqli_query($conn, $sql);
-    $number_of_rows = mysqli_num_rows($result);
-    if($number_of_rows > 0)
-    {
-        $i = 0;
-        while($row=mysqli_fetch_assoc($result))
-        {
-            $array[$i]=$row["id"];
-            $i++;
-            $array[$i]=$row["imie"];
-            $i++;
-            $array[$i]=$row["nazwisko"];
-            $i++;
-            $array[$i]=$row["ranga"];
-            $i++;
-            $array[$i]=$row["akcje"];
-            $i++;
-            $array[$i]=$row["oddzial_id"];
             $i++;
         }
     }

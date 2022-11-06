@@ -15,10 +15,10 @@
 require_once "baza_wopr.php";
 require_once "funkcje_wopr.php";
 
-$user=zajety($conn, ($_SESSION["ID_USER"]*-1));
 if(isset($_SESSION["ID"])==false){
     header("location: ../login-form-15/index_wopr.php?error=nieladniegagatku");
 }
+
 ?>
 
  
@@ -36,7 +36,7 @@ if(isset($_SESSION["ID"])==false){
                 </a>
             </li>
             <li>
-                <span class="nav-text"><?php echo $user["imie"]." ".$user["nazwisko"] ?></span><br>
+                <span class="nav-text"><?php echo $_SESSION["IMIE"]." ".$_SESSION["NAZWISKO"] ?></span><br>
                 <span class="nav-text"><?php echo $_SESSION["RANGA"] ?></span>
             </li>
         </ul>

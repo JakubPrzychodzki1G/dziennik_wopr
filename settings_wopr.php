@@ -14,8 +14,6 @@
     <body>
         <?php
             include "header_wopr.php";
-            $info_ratownik=load_lifeguard($conn, $_SESSION["ID_USER"]);
-            $info_konto = zajety($conn, $_SESSION["ID_USER"]);
             function gender($name){
                 if(substr($name,strlen($name))!=="a"){
                     return "Mężczyzna";
@@ -40,19 +38,19 @@
                             <div class="row p-1">
                                 <div class="input-group mb-3">
                                     <span class="input-group-text" id="basic-addon1">Imię i Nazwisko</span>
-                                    <input disabled type="text" class="form-control mt-0" value="<?php echo $info_ratownik[1]." ".$info_ratownik[2];?>" aria-label="Username" aria-describedby="basic-addon1">
+                                    <input disabled type="text" class="form-control mt-0" value="<?php echo $_SESSION["IMIE"]." ".$_SESSION["NAZWISKO"];?>" aria-label="Username" aria-describedby="basic-addon1">
                                 </div>
                             </div>
                             <div class="row p-1">
                                 <div class="input-group mb-3">
                                     <span class="input-group-text" id="basic-addon1">Ranga</span>
-                                    <input disabled type="text" class="form-control mt-0" value="<?php echo $info_ratownik[3] ?>" aria-label="Username" aria-describedby="basic-addon1">
+                                    <input disabled type="text" class="form-control mt-0" value="<?php echo $_SESSION["RANGA"] ?>" aria-label="Username" aria-describedby="basic-addon1">
                                 </div>
                             </div>
                             <div class="row p-1">
                                 <div class="input-group mb-3">
                                     <span class="input-group-text" id="basic-addon1">Płęć</span>
-                                    <input disabled type="text" class="form-control mt-0" value="<?php echo gender($info_ratownik[1]); ?>" aria-label="Username" aria-describedby="basic-addon1">
+                                    <input disabled type="text" class="form-control mt-0" value="<?php echo gender($_SESSION["IMIE"]); ?>" aria-label="Username" aria-describedby="basic-addon1">
                                 </div>
                             </div>
                         </div>
@@ -69,13 +67,13 @@
                             <div class="row p-1">
                                 <div class="input-group mb-3">
                                     <span class="input-group-text" id="basic-addon1">E-mail</span>
-                                    <input disabled type="text" class="form-control mt-0" value="<?php echo $info_konto["login"]."@gmail.com"; ?>" aria-label="Username" aria-describedby="basic-addon1">
+                                    <input disabled type="text" class="form-control mt-0" value="<?php echo $_SESSION["LOGIN"]."@gmail.com"; ?>" aria-label="Username" aria-describedby="basic-addon1">
                                 </div>
                             </div>
                             <div class="row p-1">
                                 <div class="input-group mb-3">
                                     <span class="input-group-text" id="basic-addon1">Login</span>
-                                    <input disabled type="text" class="form-control mt-0" value="<?php echo $info_konto["login"]; ?>" aria-label="Username" aria-describedby="basic-addon1">
+                                    <input disabled type="text" class="form-control mt-0" value="<?php echo $_SESSION["LOGIN"]; ?>" aria-label="Username" aria-describedby="basic-addon1">
                                 </div>
                             </div>
                             <div class="row p-1">

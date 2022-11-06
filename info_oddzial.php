@@ -4,8 +4,11 @@
         <?php 
             require "baza_wopr.php";
             require_once "funkcje_wopr.php";
+            include "./classes/database_c.php";
+            include "./classes/load_ratownicy_c.php";
             $oddzial = load_oddzial($conn,$_GET["oddzial_id"]);
-            $ratownicy= load_lifeguard($conn, $_GET["oddzial_id"]);
+            $ratownicy_obj = new Lifeguard();
+            $ratownicy= $ratownicy_obj->get_oddzial($_GET["oddzial_id"]);
         ?>
     </head>
     <body>
@@ -54,7 +57,7 @@
                                             <span class=''>Kierownik: ".$oddzial[5]."</span>
                                         </div>
                                         <div class='row p-2 bg-danger shadow mt-2'>
-                                            <span class=''>Liczba ratowników: ".(count($ratownicy)/6)."</span>
+                                            <span class=''>Liczba ratowników: ".(count($ratownicy))."</span>
                                         </div>
                                     </div>
                                 </div>";
@@ -72,13 +75,13 @@
                                     <tbody>
                                         <?php
                                         $j=0;
-                                        for($i=0;$i<count($ratownicy);$i=$i+6){
-                                        $j++;
-                                        echo "<tr>
-                                        <th scope='row'>".$j."</th>
-                                            <td>".$ratownicy[$i+1]."</td>
-                                            <td>".$ratownicy[$i+2]."</td>
-                                        </tr>";
+                                        for($i=0;$i<count($ratownicy);$i++){
+                                            $j++;
+                                            echo "<tr>
+                                            <th scope='row'>".$j."</th>
+                                                <td>".$ratownicy[$i]["imie"]."</td>
+                                                <td>".$ratownicy[$i]["nazwisko"]."</td>
+                                            </tr>";
                                         }
                                         ?>
                                     </tbody>

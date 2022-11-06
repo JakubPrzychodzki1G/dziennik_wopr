@@ -9,6 +9,11 @@
             include "header_wopr.php";
             require "baza_wopr.php";
             require_once "funkcje_wopr.php";
+            include "./classes/database_c.php";
+            include "./classes/load_ratownicy_c.php";
+            include "./classes/load_oddzial_c.php";
+            $lifeguards_obj = new Lifeguard();
+            $oddzial_obj = new Oddzial();
         ?>
         
             <div class="container" style="padding-top:80px;">
@@ -21,46 +26,43 @@
                         <div class="col col-5">Skład</div>
                     </li>
                         <?php
-                        $oddzialy = load_oddzial($conn,-1);
+                        $oddzialy = $oddzial_obj->get_all();
                         $number_of_oddzialy = count($oddzialy);
                         $i=0;
                         for( $i = 0; $i<$number_of_oddzialy; $i++)
                         {
                         ?>
                             <li class="table-row collapsible">
-                                <div class="col col-1" data-label="id"><?php echo $oddzialy[$i]; ?></div>
-                                <div class="col col-2" data-label="nazwa"><?php echo $oddzialy[$i+1]; ?></div>
-                                <div class="col col-3" data-label="lokalizacja"><?php echo $oddzialy[$i+4]; ?></div>
-                                <div class="col col-4" data-label="kierownik"><?php echo $oddzialy[$i+5]; ?></div>
-                                
+                                <div class="col col-1" data-label="id"><?php echo $oddzialy[$i]["id"]; ?></div>
+                                <div class="col col-2" data-label="nazwa"><?php echo $oddzialy[$i]["nazwa"]; ?></div>
+                                <div class="col col-3" data-label="lokalizacja"><?php echo $oddzialy[$i]["lokalizacja"]; ?></div>
+                                <div class="col col-4" data-label="kierownik"><?php echo $oddzialy[$i]["kierownik"]; ?></div>
                                 <div class="col col-5" data-label="sklad">dsafa</div>
                             </li>
                             <div id="zamkniencie" style="display:none;">
                             <?php
-                            $lifeguards = 0;
-                            $lifeguards = load_lifeguard($conn, -1 );
+                            $lifeguards = $lifeguards_obj->get_all();
                             
                             //echo $oddzialy[$i+1];
                             $number_of_lifeguards = count($lifeguards);
                             for( $j = 0; $j<$number_of_lifeguards; $j++){
                                 //echo $lifeguards[$j+5].' == '.$oddzialy[$i];
-                                if($lifeguards[$j+5] == $oddzialy[$i]){
+                                if($lifeguards[$j]["oddzial_id"] == $oddzialy[$i]["id"]){
                                     
                                     echo '<div class="table-under" style="display:block;">
                                         <div class="ratownik-list">
-                                            <div class="col col-1" data-label="id">'.$lifeguards[$j].'</div>
-                                            <div class="col col-2" data-label="imie">'.$lifeguards[$j+1].'</div>
-                                            <div class="col col-3" data-label="nazwisko">'.$lifeguards[$j+2].'</div>
-                                            <div class="col col-4" data-label="ranga">'.$lifeguards[$j+3].'</div>
-                                            <div class="col col-5" data-label="akcje">'.$lifeguards[$j+5].'</div>
+                                            <div class="col col-1" data-label="id">'.$lifeguards[$j]["id"].'</div>
+                                            <div class="col col-2" data-label="imie">'.$lifeguards[$j]["imie"].'</div>
+                                            <div class="col col-3" data-label="nazwisko">'.$lifeguards[$j]["nazwisko"].'</div>
+                                            <div class="col col-4" data-label="ranga">'.$lifeguards[$j]["ranga"].'</div>
+                                            <div class="col col-5" data-label="akcje">'.$lifeguards[$j]["akcje"].'</div>
                                             
                                         </div>
                                     </div>';
                                     
                                 }
-                                $j=$j+5;
                             }
-                            $i=$i+6;
+    
                             ?>
                             </div>
                             <?php

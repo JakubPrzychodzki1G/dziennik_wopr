@@ -14,8 +14,11 @@
             include "header_wopr.php";
             require "baza_wopr.php";
             require_once 'funkcje_wopr.php';
+            include "./classes/database_c.php";
+            include "./classes/load_ratownicy_c.php";
             $action = load_action($conn, $_SESSION["ID_USER"],0);
-            $lifeguards = load_lifeguard($conn, $_SESSION["ID_ODDZIAL"]);
+            $lifeguards_obj = new Lifeguard();
+            $lifeguards = $lifeguards_obj->get_oddzial($_SESSION["ID_ODDZIAL"]);
         ?>
         
         <div class="main-container1">
@@ -38,7 +41,8 @@
                         for($k = 1; $k<=10; $k++){
                             if($action[$j]["ratownik".$k]==NULL)
                                 continue;
-                            echo $lifeguards[$action[$j]["ratownik".$k]+1]. " " .$lifeguards[$action[$j]["ratownik".$k]+2]." ";
+                            //echo $action[$j]["ratownik".$k]+1;
+                            echo $lifeguards[$action[$j]["ratownik".$k]]["imie"]. " " .$lifeguards[$action[$j]["ratownik".$k]]["nazwisko"]." ";
                         }
                     ?>
                     </div>
@@ -151,8 +155,8 @@
                                                                                 <option selected>Ratownicy</option>
                                                                                 <?php 
     
-                                                                                    for($i = 0 ; $i < count($lifeguards)/5; $i=$i+4){?>
-                                                                                        <option value=<?php echo '"'.$lifeguards[$i].'"'; ?>><?php echo $lifeguards[$i+1]. " " .$lifeguards[$i+2];?></option>
+                                                                                    for($i = 0 ; $i < count($lifeguards); $i++){?>
+                                                                                        <option value=<?php echo '"'.$lifeguards[$i]["id"].'"'; ?>><?php echo $lifeguards[$i]["imie"]. " " .$lifeguards[$i]["nazwisko"];?></option>
                                                                                     <?php
                                                                                     }?>
                                                                             </select>
