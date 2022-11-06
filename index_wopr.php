@@ -26,7 +26,7 @@
 			      		</div>
 
 			      	</div>
-					<form action="login.php" method="post" class="signin-form">
+					<form action="includes/login_i.php" method="post" class="signin-form">
 			      		<div class="form-group mt-3">
 			      			<input type="text" class="form-control" name="login_" id="login_" required>
 			      			<label class="form-control-placeholder" for="username">Login:</label>
