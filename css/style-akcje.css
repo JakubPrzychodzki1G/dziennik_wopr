@@ -1,0 +1,189 @@
+
+
+  .main-container1 {
+    padding: 40px;
+    padding-top: 80px;
+    background: #edf1f5;
+  }
+  
+  /* HEADING */
+  
+  .heading {
+    text-align: center;
+  }
+  
+  .heading__title {
+    font-weight: 600;
+  }
+  
+  .heading__credits {
+    margin: 10px 0px;
+    color: #888888;
+    font-size: 25px;
+    transition: all 0.5s;
+  }
+  
+  .heading__link {
+    text-decoration: none;
+  }
+  
+  .heading__credits .heading__link {
+    color: inherit;
+  }
+  
+  /* CARDS */
+  
+  .cards_akcje {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica,
+    Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+  }
+  
+  .card_akcje {
+    margin: 20px;
+    padding: 20px;
+    width: 40%;
+    min-height: 400px;
+    display: grid;
+    grid-template-rows: 20px 50px 1fr 1fr 50px;
+    box-shadow: 0px 6px 10px rgba(0, 0, 0, 0.25);
+    transition: all 0.2s;
+  }
+  
+  .card_akcje:hover {
+    box-shadow: 0px 6px 10px rgba(0, 0, 0, 0.4);
+    transform: scale(1.01);
+  }
+  .card__name1,
+  .card__link1,
+  .card__exit1,
+  .card__icon1 {
+    text-decoration: none;
+    color: rgba(255, 255, 255, 0.9);
+  }
+  
+  .card__link1::after {
+    top: 25px;
+    left: 0;
+    content: "";
+    width: 0%;
+    height: 3px;
+    background-color: rgba(255, 255, 255, 0.6);
+    transition: all 0.5s;
+  }
+  
+  .card__link1:hover::after {
+    width: 100%;
+  }
+  
+  .card__exit1 {
+    grid-row: 1/2;
+    justify-self: end;
+  }
+  
+  .card__icon1 {
+    grid-row: 2/3;
+    font-size: 30px;
+  }
+
+  .card__addons1{
+      grid-row: 4/5;
+      font-weight: 400;
+      color: white;
+  }
+  
+  .card__title1 {
+    grid-row: 3/4;
+    font-weight: 400;
+    color: #ffffff;
+  }
+  
+  .card__apply1 {
+    grid-row: 5/6;
+    align-self: center;
+  }
+  .card__add1{
+    grid-row: 3/5;
+    display: flex;
+    color: #ffffff;
+    align-items: center;
+    justify-content: center;
+  }
+  /* CARD BACKGROUNDS */
+  
+  .card-1 {
+    background: radial-gradient(var(--primary), var(--fourth));
+  }
+  
+  .card-add {
+    background: radial-gradient(#e23e3e, #cd3c3c);
+  }
+  .card{
+    width:400px;background-color:#fff;border:none;border-radius: 12px
+  }
+  label.radio{
+    cursor: pointer;
+    width: 100%
+  }
+  label.radio input{
+    position: absolute;
+    top: 0;
+    left: 0;
+    visibility: hidden;
+    pointer-events: none
+  }
+  label.radio span{
+    padding: 7px 14px;
+    border: 2px solid #eee;
+    display: inline-block;
+    color: #039be5;
+    border-radius: 10px;
+    width: 100%;
+    height: 48px;
+    line-height: 27px
+  }
+  label.radio input:checked+span{
+    border-color: #039BE5;
+    background-color: #81D4FA;
+    color: #fff;
+    border-radius: 9px;
+    height: 48px;
+    line-height: 27px
+  }
+  .form-control{
+    margin-top: 10px;
+    height: 48px;
+    border: 2px solid #eee;
+    border-radius: 10px
+  }
+  .form-control:focus{
+    box-shadow: none;
+    border: 2px solid #039BE5
+  }
+  .agree-text{
+    font-size: 12px
+  }
+  .terms{
+    font-size: 12px;
+    text-decoration: none;
+    color: #039BE5
+  }
+  .confirm-button{
+    height: 50px;
+    border-radius: 10px
+  }
+  
+  /* RESPONSIVE */
+  
+  @media (max-width: 1000px) {
+    .cards_akcje {
+      justify-content: center;
+    }
+    #col1, #col2{
+      margin:0;
+      padding: 0;
+    }
+  }
+  

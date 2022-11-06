@@ -1,0 +1,94 @@
+body {
+  font-family: 'Strait', sans-serif;
+}
+.container {
+    max-width: 80%;
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: 10px;
+
+}
+h2 {
+    font-size: 26px;
+    margin: 20px 0;
+    text-align: center;
+}
+h2 small {
+    font-size: 0.5em;
+}
+.responsive-table li {
+    padding: 25px;
+    display: flex;
+    justify-content: space-between;
+    
+    border-radius: 2px;
+}
+.responsive-table .table-header {
+    background-color: #eb3030;
+    font-size: 14px;
+    text-transform: uppercase;
+    letter-spacing: 0.03em;
+    margin-bottom: 15px;
+}
+.responsive-table .table-row {
+    background-color: #fff;
+    box-shadow: 0px 0px 9px 0px rgba(0, 0, 0, 0.1);
+    margin-top:15px;
+}
+.responsive-table .table-under {
+    display: flex;
+    background-color: #eb3030;
+    box-shadow: 0px 0px 2px 0px black;
+    display: none;
+    width: 95%;
+    margin-left: 1.5%;
+    padding: 1%;
+    border-radius: 1%;
+    margin-bottom: 2%;
+    flex-direction: column;
+}
+.responsive-table .ratownik-list{
+    background-color: var(--primary);
+    width: 99%;
+    padding: 5px;
+    display: flex;
+    margin-top:1%;
+    border-radius: 5px;
+}
+.responsive-table .col-1 {
+    flex-basis: 8%;
+}
+.responsive-table .col-2 {
+    flex-basis: 32%;
+}
+.responsive-table .col-3 {
+    flex-basis: 20%;
+}
+.responsive-table .col-4 {
+    flex-basis: 20%;
+}
+.responsive-table .col-5 {
+  flex-basis: 20%;
+}
+@media all and (max-width: 767px) {
+    .responsive-table .table-header {
+        display: none;
+   }
+    .responsive-table li {
+        display: block;
+   }
+    .responsive-table .col {
+        flex-basis: 100%;
+   }
+    .responsive-table .col {
+        display: flex;
+        padding: 10px 0;
+   }
+    .responsive-table .col:before {
+        color: var(--primary);
+        padding-right: 10px;
+        content: attr(data-label);
+        flex-basis: 50%;
+        text-align: right;
+   }
+}
