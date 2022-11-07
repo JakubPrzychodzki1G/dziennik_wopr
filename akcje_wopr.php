@@ -16,7 +16,9 @@
             require_once 'funkcje_wopr.php';
             include "./classes/database_c.php";
             include "./classes/load_ratownicy_c.php";
-            $action = load_action($conn, $_SESSION["ID_USER"],0);
+            include "./classes/load_action_c.php";
+            $action_obj = new Action();
+            $action = $action_obj->get_all($_SESSION["ID_USER"]);
             $lifeguards_obj = new Lifeguard();
             $lifeguards = $lifeguards_obj->get_oddzial($_SESSION["ID_ODDZIAL"]);
         ?>
@@ -38,12 +40,16 @@
                     <h2 class="card__title1"><?php echo 'co sie dzialo w akcji: '.$action[$j]["injury_type"]; ?></h2>
                     <div class="card_addons1"><h2 class="card__title1">Uczestnicy:</h2>
                     <?php
+                    for($l = 0; $l<count($lifeguards);$l++){
                         for($k = 1; $k<=10; $k++){
-                            if($action[$j]["ratownik".$k]==NULL)
+                            if($action[$j]["ratownik".strval($k)]===NULL)
                                 continue;
-                            //echo $action[$j]["ratownik".$k]+1;
-                            echo $lifeguards[$action[$j]["ratownik".$k]]["imie"]. " " .$lifeguards[$action[$j]["ratownik".$k]]["nazwisko"]." ";
+                            if($action[$j]["ratownik".strval($k)]==$lifeguards[$l]["id"]){
+                                echo $lifeguards[$l]["imie"]. " " .$lifeguards[$l]["nazwisko"]." ";
+                            }
+                            
                         }
+                    }
                     ?>
                     </div>
                     <p class="card__apply1">

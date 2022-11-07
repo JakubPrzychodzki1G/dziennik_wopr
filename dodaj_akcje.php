@@ -1,5 +1,9 @@
 <?php
 session_start();
+
+include "./classes/database_c.php";
+include "./classes/load_action_c.php";
+
 if(isset($_POST["submit"]))
 {
     $victim_name = $_POST["victim_name"];
@@ -31,7 +35,8 @@ if(isset($_POST["submit"]))
     }*/
     require_once "baza_wopr.php";
     require_once "funkcje_wopr.php";
-    add_action($conn, $lifeguard_squad, $victim_name, $victim_birth, $victim_adress, $action_start, $action_end, $injury_type, $help_type, $event_place, $trans_time, $trans_place, $trans_id, $lifeguards);
+    $action_obj = new Action();
+    $action_obj->add($lifeguard_squad, $victim_name, $victim_birth, $victim_adress, $action_start, $action_end, $injury_type, $help_type, $event_place, $trans_time, $trans_place, $trans_id, $lifeguards);
     
 }
 elseif(isset($_POST["btnDelete"]))
@@ -40,7 +45,8 @@ elseif(isset($_POST["btnDelete"]))
     $id_user = $_SESSION["ID_USER"];
     require_once "baza_wopr.php";
     require_once "funkcje_wopr.php";
-    del_action($conn, $id, $id_user);
+    $action_obj = new Action();
+    $action_obj->delete($id, $id_user);
 }
 
 ?>

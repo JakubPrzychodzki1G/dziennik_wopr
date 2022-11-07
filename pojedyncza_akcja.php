@@ -13,11 +13,14 @@
             include "header_wopr.php";
             require "baza_wopr.php";
             require_once 'funkcje_wopr.php';
+            include "./classes/database_c.php";
+            include "./classes/load_action_c.php";
+            $action1_obj = new Action();
         ?>
         <div class="main-container1">
             <div class="cards_akcje">
                 <?php echo 'id akcji: '.$_GET["akcja"]; 
-                $action1=load_one_action($conn, $_SESSION["ID_USER"], $_GET["akcja"]);?>
+                $action1=$action1_obj->get_one($_SESSION["ID_USER"], $_GET["akcja"]);?>
                 <form action="edit_action.php" method="post">
                     <input type="text" style = "margin:0;" class="form-control" name="victim_adress" value="<?php echo $action1[0]["id"]; ?>">
                     <input type="text" style = "margin:0;" class="form-control" name="victim_adress1" value="<?php echo $action1[0]["data_dodania"]; ?>">

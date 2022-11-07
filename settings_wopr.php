@@ -14,14 +14,7 @@
     <body>
         <?php
             include "header_wopr.php";
-            function gender($name){
-                if(substr($name,strlen($name))!=="a"){
-                    return "Mężczyzna";
-                }
-                else{
-                    return "Kobieta";
-                }
-            }
+            
 
         ?>
         

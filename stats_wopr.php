@@ -19,8 +19,13 @@
         $wykres = month_stats($conn, $_SESSION["ID_USER"],0);
         $akcje_dzien = month_stats($conn, $_SESSION["ID_USER"],1);
         $srednia_akcja = month_stats($conn, $_SESSION["ID_USER"],2);
-        $akcje_limit = load_action($conn, $_SESSION["ID_USER"],1);
-        $akcje_urazy = load_action($conn,$_SESSION["ID_USER"],2);
+        include "./classes/database_c.php";
+        include "./classes/load_action_c.php";
+        $akcje_obj = new Action();
+        $akcje_limit = $akcje_obj->get_top_7($_SESSION["ID_USER"]);
+        $akcje_urazy = $akcje_obj->count_urazy($_SESSION["ID_USER"]);
+        //$akcje_limit = load_action($conn, $_SESSION["ID_USER"],1);
+        //$akcje_urazy = load_action($conn,$_SESSION["ID_USER"],2);
     ?>
     <div id="main-wrapper" data-layout="vertical" data-navbarbg="skin5" data-sidebartype="full" style="padding-top:80px;"
         data-sidebar-position="absolute" data-header-position="absolute" data-boxed-layout="full">

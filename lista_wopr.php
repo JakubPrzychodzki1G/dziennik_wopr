@@ -37,7 +37,7 @@
                                 <div class="col col-2" data-label="nazwa"><?php echo $oddzialy[$i]["nazwa"]; ?></div>
                                 <div class="col col-3" data-label="lokalizacja"><?php echo $oddzialy[$i]["lokalizacja"]; ?></div>
                                 <div class="col col-4" data-label="kierownik"><?php echo $oddzialy[$i]["kierownik"]; ?></div>
-                                <div class="col col-5" data-label="sklad">dsafa</div>
+                                <div class="col col-5" data-label="sklad">Kliknij, by zobaczyć skład</div>
                             </li>
                             <div id="zamkniencie" style="display:none;">
                             <?php

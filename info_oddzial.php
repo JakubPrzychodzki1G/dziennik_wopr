@@ -6,8 +6,10 @@
             require_once "funkcje_wopr.php";
             include "./classes/database_c.php";
             include "./classes/load_ratownicy_c.php";
-            $oddzial = load_oddzial($conn,$_GET["oddzial_id"]);
+            include "./classes/load_oddzial_c.php";
             $ratownicy_obj = new Lifeguard();
+            $oddzial_obj = new Oddzial();
+            $oddzial = $oddzial_obj->get_one($_GET["oddzial_id"]);
             $ratownicy= $ratownicy_obj->get_oddzial($_GET["oddzial_id"]);
         ?>
     </head>
@@ -47,14 +49,14 @@
                     <div class="col-6" style="height:500px;">
                         <div class="row bg-white h-75 border border-danger border-5 shadow-2">
                             <div class="col-6">
-                                <?php echo "<h5 class='p-4'>".$oddzial[1]."</h5>
+                                <?php echo "<h5 class='p-4'>".$oddzial[0]["nazwa"]."</h5>
                                 <div class='row p-4 text-white'>
                                     <div class='col-12'>
                                         <div class='row p-2 bg-danger shadow'>
-                                            <span class=''>Lokalizacja: ".$oddzial[4]."</span>
+                                            <span class=''>Lokalizacja: ".$oddzial[0]["lokalizacja"]."</span>
                                         </div>
                                         <div class='row p-2 bg-danger shadow mt-2'>
-                                            <span class=''>Kierownik: ".$oddzial[5]."</span>
+                                            <span class=''>Kierownik: ".$oddzial[0]["kierownik"]."</span>
                                         </div>
                                         <div class='row p-2 bg-danger shadow mt-2'>
                                             <span class=''>Liczba ratowników: ".(count($ratownicy))."</span>
@@ -124,7 +126,7 @@
                             </div>
                         </div>
                         <div class="row h-75">
-                            <img src=<?php echo "images/".$oddzial[6].".jpg"; ?> class="w-100">
+                            <img src=<?php echo "images/".$oddzial[0]["img_id"].".jpg"; ?> class="w-100">
                         </div>
                         
                     </div>

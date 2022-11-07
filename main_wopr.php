@@ -23,7 +23,10 @@
         <?php
             require_once "baza_wopr.php";
             require_once "funkcje_wopr.php";
-            $oddzial=load_oddzial($conn,-1);
+            include "./classes/database_c.php";
+            include "./classes/load_oddzial_c.php";
+            $oddzial_obj = new Oddzial();
+            $oddzial=$oddzial_obj->get_all();
         ?>
         <script>
 
@@ -35,15 +38,15 @@
                     zoom: 8,
                 });
                 for(let i = 0; i < oddzialArray.length; i++){
-                    const contentString ="<h5>"+ oddzialArray[i+1]+", kierownik: "+ oddzialArray[i+5]+"</h5><br><a class='btn btn-danger w-100' href='info_oddzial.php?oddzial_id="+oddzialArray[i]+"'>Info</a>";
-                    const myLatLng = { lat: parseFloat(oddzialArray[i+2]), lng: parseFloat(oddzialArray[i+3]) };
+                    const contentString ="<h5>"+ oddzialArray[i]["nazwa"]+", kierownik: "+ oddzialArray[i]["kierownik"]+"</h5><br><a class='btn btn-danger w-100' href='info_oddzial.php?oddzial_id="+oddzialArray[i]["id"]+"'>Info</a>";
+                    const myLatLng = { lat: parseFloat(oddzialArray[i]["pos_x"]), lng: parseFloat(oddzialArray[i]["pos_y"]) };
                     const infowindow = new google.maps.InfoWindow({
                         content: contentString,
                     });
                     const marker = new google.maps.Marker({
                         position: myLatLng,
                         map,
-                        title: oddzialArray[i+1 ],
+                        title: toString(oddzialArray[i+1]),
                     });
 
                     marker.addListener("click", () => {
@@ -53,7 +56,6 @@
                         shouldFocus: false,
                         });
                     });
-                    i=i+6
                 };
             };
             window.initMap = initMap;

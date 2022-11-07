@@ -15,5 +15,8 @@ if(isset($_POST["submit"]))
     $trans_place = $_POST["victim_adress11"];
     require_once "baza_wopr.php";
     require_once "funkcje_wopr.php";
-    edit_action($conn, $id, $victim_name, $victim_birth, $victim_adress, $action_start, $action_end, $injury_type, $help_type, $event_place, $trans_time, $trans_place );
+    include "./classes/database_c.php";
+    include "./classes/load_action_c.php";
+    $action_obj = new Action();
+    $action_obj->edit($id, $victim_name, $victim_birth, $victim_adress, $action_start, $action_end, $injury_type, $help_type, $event_place, $trans_time, $trans_place );
 }

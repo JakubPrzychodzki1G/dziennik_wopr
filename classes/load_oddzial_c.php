@@ -29,7 +29,7 @@ class Oddzial extends database{
             exit();
 
         }
-        $array_oddzial = $stmt->fetchAll(PDO::FETCH_ASSOC);
+        $array_one = $stmt->fetchAll(PDO::FETCH_ASSOC);
         $stmt=null;
         return $array_one;
 
