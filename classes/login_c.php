@@ -12,13 +12,13 @@ class Login extends database{
 
         if (!$stmt->execute(array($login))) {
             $stmt = null;
-            header("location: ../index.php?error=stmtfailed");
+            header("location: ../index_wopr.php?error=stmtfailed");
             exit();
         }
         
         if ($stmt->rowCount()==0) {
             $stmt = null;
-            header("location: ../index.php?error=usernotfound");
+            header("location: ../index_wopr.php?error=usernotfound");
             exit();
         }
 
@@ -27,7 +27,7 @@ class Login extends database{
 
         if (!$check) {
             $stmt = null;
-            header("location: ../index.php?error=wrongpassword");
+            header("location: ../index_wopr.php?error=wrongpassword");
             exit();
         }
         elseif($check){
@@ -35,13 +35,13 @@ class Login extends database{
             
             if (!$stmt->execute(array($login))) {
                 $stmt = null;
-                header("location: ../index.php?error=stmtfailed");
+                header("location: ../index_wopr.php?error=stmtfailed");
                 exit();
             }
 
             if ($stmt->rowCount()==0) {
                 $stmt = null;
-                header("location: ../index.php?error=usernotfound");
+                header("location: ../index_wopr.php?error=usernotfound");
                 exit();
             }
 
@@ -49,7 +49,7 @@ class Login extends database{
             $stmt1 = $this->connect()->prepare("SELECT oddzial_id, ranga FROM ratownicy WHERE id = ?");
             if (!$stmt1->execute(array($user[0]["id"]))) {
                 $stmt = null;
-                header("location: ../index.php?error=stmtfailed");
+                header("location: ../index_wopr.php?error=stmtfailed");
                 exit();
             }
             $user_info = $stmt1->fetchAll(PDO::FETCH_ASSOC);

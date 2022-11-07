@@ -15,7 +15,7 @@ function month_stats($id,$zmienna)
     elseif($zmienna==1){
         $date = date('Y-m-d 00:00:00');
         $date1= date('Y-m-d 23:59:59');
-        $sql = "SELECT COUNT(id) FROM akcje WHERE action_start BETWEEN '$date' AND '$date1';";
+        $sql = "SELECT COUNT(id) FROM akcje WHERE widoczne = 1 AND (ratownik1 = $id OR ratownik2 = $id OR ratownik3 = $id OR ratownik4 = $id OR ratownik5 = $id OR ratownik6 = $id OR ratownik7 = $id OR ratownik8 = $id OR ratownik9 = $id OR ratownik10 = $id) AND action_start BETWEEN '$date' AND '$date1';";
     }
     elseif($zmienna==2)
     {
@@ -44,7 +44,8 @@ function month_stats($id,$zmienna)
     return $array;
 }
 function edit_haslo($id, $haslo)
-{   $conn = mysqli_connect('localhost','root','ten','wopr_dziennik');
+{   
+    $conn = mysqli_connect('localhost','root','ten','wopr_dziennik');
     if($conn->connect_error)
     {
         die("nie ma bazy danyh". mysqli_connect_error());

@@ -15,7 +15,7 @@ class Signup extends database{
             header("location: ../index_wopr.php?error=stmtfailed");
             exit();
         }
-        if (!$stmt2->execute(array($name, $surname, "Ratownik_WOPR", 3))) {
+        if (!$stmt2->execute(array($name, $surname, "Ratownik WOPR", 3))) {
             $stmt = null;
             header("location: ../index_wopr.php?error=stmtfailed");
             exit();

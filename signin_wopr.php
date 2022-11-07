@@ -50,7 +50,7 @@
 		                    <span toggle="#password-field1" class="fa fa-fw fa-eye field-icon toggle-password"></span>
 		                </div>
 		                <div class="form-group">
-		            	    <button type="submit" name="submit" class="form-control btn rounded submit px-3" style="background-color: red;">Zaloguj się</button>
+		            	    <button type="submit" name="submit" class="form-control btn rounded submit px-3" style="background-color: red;">Zarejestruj się</button>
 		                </div>
 		          </form>
 		        </div>

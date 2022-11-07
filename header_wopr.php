@@ -85,7 +85,7 @@ if(isset($_SESSION["ID_USER"])===false){
         </ul>
         <ul class="logout">
             <li>
-                <a href="http://startific.com">
+                <a href="/login-form-15/includes/logout_i.php">
                 <i class="fa fax fa-lightbulb-o fa-lg"></i>
                 <span class="nav-text">
                     Wyloguj się 
