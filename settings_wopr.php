@@ -1,9 +1,9 @@
+<?php session_start(); ?>
 <!DOCTYPE html>
 <html dir="ltr" lang="en">
     <head>
         <?php
             require_once "funkcje_wopr.php";
-            require "baza_wopr.php";
         ?>
         <link rel="stylesheet" href="css/bootstrap.css">
         <script src="js/bootstrap.bundle.min.js"></script>

@@ -13,7 +13,6 @@ if(isset($_POST["submit"]))
     $event_place = $_POST["victim_adress9"];
     $trans_time = $_POST["victim_adress10"];
     $trans_place = $_POST["victim_adress11"];
-    require_once "baza_wopr.php";
     require_once "funkcje_wopr.php";
     include "./classes/database_c.php";
     include "./classes/load_action_c.php";

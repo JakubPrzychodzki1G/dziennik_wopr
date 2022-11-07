@@ -65,17 +65,39 @@ class Action extends database{
 
     public function add($lifeguard_squad, $victim_name, $victim_birth, $victim_adress, $action_start, $action_end, $injury_type, $help_type, $event_place, $trans_time, $trans_place, $trans_id, $lifeguard_action)
     {
+        for($i = 0; $i<10;$i++){
+            if(!isset($lifeguard_action[$i])){
 
+                $lifeguard_action[$i] = null;
+
+            }
+        }
+        if(strlen($trans_time)==0||strlen($trans_place)==0||strlen($trans_id)==0){
+
+            if(strlen($trans_time)>0||strlen($trans_place)>0||strlen($trans_id)>0){
+
+                header("location: ../login-form-15/akcje_wopr.php?error=transfail");
+                exit();
+
+            }
+
+        }
+        if($trans_time == ""){
+            $trans_time = "0000-00-00T00:00";
+            $trans_place= " ";
+            $trans_id = 0;
+        }
         $stmt = $this->connect()->prepare("INSERT INTO akcje(data_dodania, id_oddzialu, victim_name, victim_birth, victim_adress, action_start, action_end, injury_type, help_type, event_place, trans_time, trans_place, trans_id, ratownik1, ratownik2, ratownik3, ratownik4, ratownik5, ratownik6, ratownik7, ratownik8, ratownik9, ratownik10) VALUES ( NOW(), ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
         if(!$stmt->execute(array($lifeguard_squad, $victim_name, $victim_birth, $victim_adress, $action_start, $action_end, $injury_type, $help_type, $event_place, $trans_time, $trans_place, $trans_id, $lifeguard_action[0], $lifeguard_action[1], $lifeguard_action[2], $lifeguard_action[3], $lifeguard_action[4], $lifeguard_action[5], $lifeguard_action[6], $lifeguard_action[7], $lifeguard_action[8], $lifeguard_action[9]))){
 
             $stmt = null;
-            header("location: ../login-form-15/akcje_wopr.php?error=stmtfail");
+            header("location: ../login-form-15/akcje_wopr.php?error=stssmtfail");
             exit();
 
         }
         $stmt = null;
         header("location: ../login-form-15/akcje_wopr.php?error=none");
+        
 
     }
 

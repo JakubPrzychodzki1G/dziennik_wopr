@@ -1,3 +1,4 @@
+
 <!DOCTYPE html><html class="menu">
 <html>
 
@@ -11,8 +12,7 @@
 <link rel="stylesheet" type="text/css" href="font-awesome-4.7.0\css\font-awesome.min.css" rel="stylesheet">
 <link rel="stylesheet" href="css/bootstrap.css">
 <script src="js/bootstrap.bundle.min.js"></script>
-<?php session_start(); 
-require_once "baza_wopr.php";
+<?php 
 require_once "funkcje_wopr.php";
 
 if(isset($_SESSION["ID_USER"])===false){

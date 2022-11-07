@@ -1,3 +1,4 @@
+<?php session_start(); ?>
 <!DOCTYPE html>
 <html>
     <head>
@@ -7,7 +8,6 @@
     <body>
         <?php
             include "header_wopr.php";
-            require "baza_wopr.php";
             require_once "funkcje_wopr.php";
             include "./classes/database_c.php";
             include "./classes/load_ratownicy_c.php";

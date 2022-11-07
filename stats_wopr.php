@@ -1,3 +1,4 @@
+<?php session_start(); ?>
 <!DOCTYPE html>
 <html dir="ltr" lang="en">
 
@@ -14,11 +15,10 @@
 <body>
     <?php
         include "header_wopr.php";
-        require "baza_wopr.php";
         require_once 'funkcje_wopr.php';
-        $wykres = month_stats($conn, $_SESSION["ID_USER"],0);
-        $akcje_dzien = month_stats($conn, $_SESSION["ID_USER"],1);
-        $srednia_akcja = month_stats($conn, $_SESSION["ID_USER"],2);
+        $wykres = month_stats($_SESSION["ID_USER"],0);
+        $akcje_dzien = month_stats($_SESSION["ID_USER"],1);
+        $srednia_akcja = month_stats($_SESSION["ID_USER"],2);
         include "./classes/database_c.php";
         include "./classes/load_action_c.php";
         $akcje_obj = new Action();

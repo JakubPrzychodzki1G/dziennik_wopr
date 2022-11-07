@@ -2,8 +2,13 @@
 
 
 
-function month_stats($conn,$id,$zmienna)
+function month_stats($id,$zmienna)
 {
+    $conn = mysqli_connect('localhost','root','ten','wopr_dziennik');
+    if($conn->connect_error)
+    {
+        die("nie ma bazy danyh". mysqli_connect_error());
+    }
     if($zmienna==0){
         $sql = "SELECT date_format(action_start, '%M'),COUNT(id) FROM akcje WHERE widoczne = 1 AND (ratownik1 = $id OR ratownik2 = $id OR ratownik3 = $id OR ratownik4 = $id OR ratownik5 = $id OR ratownik6 = $id OR ratownik7 = $id OR ratownik8 = $id OR ratownik9 = $id OR ratownik10 = $id) GROUP BY date_format(action_start, '%M') ;";
     }
@@ -38,8 +43,12 @@ function month_stats($conn,$id,$zmienna)
     }
     return $array;
 }
-function edit_haslo($conn, $id, $haslo)
-{
+function edit_haslo($id, $haslo)
+{   $conn = mysqli_connect('localhost','root','ten','wopr_dziennik');
+    if($conn->connect_error)
+    {
+        die("nie ma bazy danyh". mysqli_connect_error());
+    }
     $sql="UPDATE users SET haslo=? WHERE id = $id;";
     $stmt=mysqli_stmt_init($conn);
     if(!mysqli_stmt_prepare($stmt,$sql))

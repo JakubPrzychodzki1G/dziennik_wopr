@@ -33,7 +33,6 @@ if(isset($_POST["submit"]))
         $j++;
 
     }*/
-    require_once "baza_wopr.php";
     require_once "funkcje_wopr.php";
     $action_obj = new Action();
     $action_obj->add($lifeguard_squad, $victim_name, $victim_birth, $victim_adress, $action_start, $action_end, $injury_type, $help_type, $event_place, $trans_time, $trans_place, $trans_id, $lifeguards);
@@ -43,7 +42,6 @@ elseif(isset($_POST["btnDelete"]))
 {
     $id=$_GET["id"];
     $id_user = $_SESSION["ID_USER"];
-    require_once "baza_wopr.php";
     require_once "funkcje_wopr.php";
     $action_obj = new Action();
     $action_obj->delete($id, $id_user);
