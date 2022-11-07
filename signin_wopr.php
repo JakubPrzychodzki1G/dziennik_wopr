@@ -22,26 +22,36 @@
 						<div class="login-wrap p-4 p-md-5">
 			      	<div class="d-flex" >
 			      		<div class="w-100" style="display:flex; justify-content: center; align-items: center;">
-			      			<h3 class="mb-4">Zaloguj się</h3>
+			      			<h3 class="mb-4">Zarejestruj się</h3>
 			      		</div>
 
 			      	</div>
-					<form action="includes/login_i.php" method="post" class="signin-form">
+					<form action="includes/signup_i.php" method="post" class="signin-form">
 			      		<div class="form-group mt-3">
-			      			<input type="text" class="form-control" name="login_" id="login_" required>
+			      			<input type="text" class="form-control" name="login_sign" id="login_" required>
 			      			<label class="form-control-placeholder" for="username">Login:</label>
 			      		</div>
-		                <div class="form-group">
-		                    <input id="password-field" type="password" name="haslo_" id="haslo_" class="form-control" required>
+                        <div class="form-group mt-3">
+			      			<input type="text" class="form-control" name="imie_sign" id="login_" required>
+			      			<label class="form-control-placeholder" for="username">Imie:</label>
+			      		</div>
+                        <div class="form-group mt-3">
+			      			<input type="text" class="form-control" name="nazwisko_sign" id="login_" required>
+			      			<label class="form-control-placeholder" for="username">Nazwisko:</label>
+			      		</div>
+                        <div class="form-group">
+		                    <input id="password-field" type="password" name="haslo_sign" id="haslo_" class="form-control" required>
 		                    <label class="form-control-placeholder" for="password" >Hasło:</label>
 		                    <span toggle="#password-field" class="fa fa-fw fa-eye field-icon toggle-password"></span>
 		                </div>
 		                <div class="form-group">
+		                    <input id="password-field1" type="password" name="haslo_re" id="haslo_" class="form-control" required>
+		                    <label class="form-control-placeholder" for="password" >Hasło:</label>
+		                    <span toggle="#password-field1" class="fa fa-fw fa-eye field-icon toggle-password"></span>
+		                </div>
+		                <div class="form-group">
 		            	    <button type="submit" name="submit" class="form-control btn rounded submit px-3" style="background-color: red;">Zaloguj się</button>
 		                </div>
-						<div class="form-group">
-							<a href="signin_wopr.php">Nie masz konta? By zarejestrować się kliknij tutaj!</a>
-						</div>
 		          </form>
 		        </div>
 		      </div>
@@ -57,4 +67,3 @@
 
 	</body>
 </html>
-

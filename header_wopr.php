@@ -31,7 +31,7 @@ if(isset($_SESSION["ID_USER"])===false){
     
         <ul>
             <li>
-                <a class="text-secondary" href="">
+                <a class="text-secondary" href="/login-form-15/includes/logout_i.php">
                     <i class="fa fa-2x fa-sign-out"></i>    
                 </a>
             </li>
