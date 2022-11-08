@@ -1,4 +1,5 @@
-<?php session_start(); ?>
+<?php session_start(); 
+check($_SESSION["ID_USER"])?>
 <!DOCTYPE html>
 <html dir="ltr" lang="en">
 

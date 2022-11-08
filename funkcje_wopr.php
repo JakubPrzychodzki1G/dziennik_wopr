@@ -71,5 +71,9 @@ function gender($name)
         return "Kobieta";
     }
 }
-
-?>
+function check($check)
+{
+    if(isset($check)===false){
+        header("location: ../login-form-15/index_wopr.php?error=nieladniegagatku");
+    }
+}

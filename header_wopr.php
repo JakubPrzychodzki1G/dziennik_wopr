@@ -1,4 +1,5 @@
 
+
 <!DOCTYPE html><html class="menu">
 <html>
 
@@ -15,9 +16,7 @@
 <?php 
 require_once "funkcje_wopr.php";
 
-if(isset($_SESSION["ID_USER"])===false){
-    header("location: ../login-form-15/index_wopr.php?error=nieladniegagatku");
-}
+
 
 ?>
 
