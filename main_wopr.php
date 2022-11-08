@@ -1,4 +1,5 @@
 <?php session_start(); 
+require_once 'funkcje_wopr.php';
 check($_SESSION["ID_USER"])?>
 <!DOCTYPE html>
 <html>
@@ -23,7 +24,6 @@ check($_SESSION["ID_USER"])?>
     </head>
     <body>
         <?php
-            require_once "funkcje_wopr.php";
             include "./classes/database_c.php";
             include "./classes/load_oddzial_c.php";
             $oddzial_obj = new Oddzial();

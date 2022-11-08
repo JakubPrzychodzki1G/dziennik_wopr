@@ -1,4 +1,5 @@
 <?php session_start(); 
+require_once 'funkcje_wopr.php';
 check($_SESSION["ID_USER"])?>
 <!DOCTYPE html>
 <html>
@@ -9,7 +10,6 @@ check($_SESSION["ID_USER"])?>
     <body>
         <?php
             include "header_wopr.php";
-            require_once "funkcje_wopr.php";
             include "./classes/database_c.php";
             include "./classes/load_ratownicy_c.php";
             include "./classes/load_oddzial_c.php";

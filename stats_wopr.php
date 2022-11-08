@@ -1,4 +1,5 @@
 <?php session_start(); 
+require_once 'funkcje_wopr.php';
 check($_SESSION["ID_USER"])?>
 <!DOCTYPE html>
 <html dir="ltr" lang="en">
@@ -16,7 +17,6 @@ check($_SESSION["ID_USER"])?>
 <body>
     <?php
         include "header_wopr.php";
-        require_once 'funkcje_wopr.php';
         $wykres = month_stats($_SESSION["ID_USER"],0);
         $akcje_dzien = month_stats($_SESSION["ID_USER"],1);
         $srednia_akcja = month_stats($_SESSION["ID_USER"],2);

@@ -1,11 +1,9 @@
 <?php session_start(); 
+require_once 'funkcje_wopr.php';
 check($_SESSION["ID_USER"])?>
 <!DOCTYPE html>
 <html dir="ltr" lang="en">
     <head>
-        <?php
-            require_once "funkcje_wopr.php";
-        ?>
         <link rel="stylesheet" href="css/bootstrap.css">
         <script src="js/bootstrap.bundle.min.js"></script>
         <link rel="stylesheet" href="css/style-akcje.css">
