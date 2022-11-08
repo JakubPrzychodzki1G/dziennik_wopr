@@ -1,6 +1,9 @@
-<?php session_start(); 
-require_once 'funkcje_wopr.php';
-check($_SESSION["ID_USER"])?>
+<?php 
+session_start();  
+if(!isset($_SESSION["ID_USER"])){
+    header("location: ../login-form-15/index_wopr.php?error=nieladniegagatku");
+} 
+?>
 <!DOCTYPE html>
 <html>
     <head>
